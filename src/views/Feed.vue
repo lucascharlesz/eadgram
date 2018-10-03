@@ -1,12 +1,13 @@
 <template>
   <div class="feed">
-    <EadgramPost :post="post" v-for="(post, index) in posts" :key="index" />
+    <Post :post="post" v-for="(post, index) in posts" :key="index" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import EadgramPost from '@/components/EadgramPost.vue';
+import Post from '@/components/Post.vue';
+import PostsService from "@/services/posts.service";
 import store from '@/data/store';
 
 export default {
@@ -16,8 +17,13 @@ export default {
       posts: store.state.posts,
     };
   },
+  mounted: function() {
+    PostsService.getPosts().then(res => {
+      store.setPosts(res.data);
+    });
+  },
   components: {
-    EadgramPost,
+    Post,
   },
 };
 </script>

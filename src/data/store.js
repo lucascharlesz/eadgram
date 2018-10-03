@@ -75,6 +75,15 @@ export default {
       filter: 'perpetua',
     });
   },
+  updatePost(post) {
+    const index = this.state.posts.findIndex(p => p.id === post.id);
+    this.state.posts[index].clapsCount = post.clapsCount;
+  },
+  setPosts(posts) {
+    posts.forEach(p => {
+      this.state.posts.push(p);
+    });
+  },
   setSelecterdFilter(filter) {
     this.state.filter.selected = filter;
   }
