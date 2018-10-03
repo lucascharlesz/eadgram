@@ -1,23 +1,24 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import PhoneBody from './views/PhoneBody.vue';
+import Feed from './views/Feed.vue';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [{
       path: '/',
-      name: 'home',
-      component: PhoneBody,
+      name: 'feed',
+      component: Feed,
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/post-filter',
+      name: 'post-filter',
+      props: true,
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import( /* webpackChunkName: "about" */ './views/About.vue'),
+        import( /* webpackChunkName: "about" */ './views/PostFilter.vue'),
     },
   ],
 });

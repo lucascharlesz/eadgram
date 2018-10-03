@@ -5,7 +5,9 @@
         <img src="./assets/eadgram.svg" />
       </div>
 
-      <router-view/>
+      <div class="phone-body">
+        <router-view/>
+      </div>
 
       <div class="phone-footer">
        <div class="home-cta">
@@ -38,7 +40,7 @@ export default {
       const reader = new FileReader();
       reader.readAsDataURL(files[0]);
       reader.onload = (e) => {
-        this.$router.push({ name: 'about', params: { selectedImage: e.target.result } });
+        this.$router.push({ name: 'post-filter', params: { selectedImage: e.target.result } });
       };
       // To enable reuploading of same files in Chrome
       document.querySelector('#file').value = '';
@@ -125,6 +127,10 @@ export default {
     }
   }
 
+  .phone-body {
+    height: 100%;
+  }
+
   .feed {
     height: 100%;
     overflow-y: scroll;
@@ -149,20 +155,6 @@ export default {
     textarea:focus {
       outline: 0;
     }
-  }
-
-  .selected-image {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    height: 330px;
-  }
-
-  .filter-container {
-    height: 210px;
-    padding: 30px 10px;
-    white-space: nowrap;
-    overflow-x: hidden;
   }
 
   .phone-footer {

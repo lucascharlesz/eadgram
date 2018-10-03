@@ -1,8 +1,6 @@
 <template>
-  <div class="phone-body">
-    <div class="feed">
-      <EadgramPost :post="post" v-for="(post, index) in posts" :key="index" />
-    </div>
+  <div class="feed">
+    <EadgramPost :post="post" v-for="(post, index) in posts" :key="index" />
   </div>
 </template>
 
@@ -12,7 +10,7 @@ import EadgramPost from '@/components/EadgramPost.vue';
 import store from '@/data/store';
 
 export default {
-  name: 'PhoneBody',
+  name: 'Feed',
   data() {
     return {
       posts: store.state.posts,
@@ -25,9 +23,6 @@ export default {
 </script>
 
 <style lang="scss">
-  .phone-body {
-    height: 100%;
-  }
 
   .feed {
     height: 100%;
