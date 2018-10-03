@@ -6,15 +6,9 @@
       "url": "http://www.webrun.com.br/wp-content/uploads/Depositphotos_13820869_m-2015.jpg",
       "createdAt": "1538504260437",
       "userId": 0,
-      "clapsCount": 78
-    },
-    {
-      "id": 1,
-      "type": "photo",
-      "url": "http://www.webrun.com.br/wp-content/uploads/Depositphotos_13820869_m-2015.jpg",
-      "createdAt": "1538504260439",
-      "userId": 0,
-      "clapsCount": 43
+      "filter": "lofi",
+      "caption": "huehuehue",
+      "clapsCount": 105
     }
   ],
   "users": [

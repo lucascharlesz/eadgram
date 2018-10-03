@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     selectFilter() {
-      store.setSelecterdFilter(this.filter.name);
+      store.setSelectedFilter(this.filter.name);
     }
   }
 

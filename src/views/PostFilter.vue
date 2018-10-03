@@ -1,12 +1,12 @@
 <template>
   <div class="post-filter">
     <div class="selected-image"
-      :class="filter.selected"
-      :style="{ backgroundImage: 'url(' + image + ')' }"></div>
+      :class="newPost.filter"
+      :style="{ backgroundImage: 'url(' + newPost.image + ')' }"></div>
     <div class="filter-container">
       <FilterType v-for="(filter, index) in filters"
         :filter="filter"
-        :image="image"
+        :image="newPost.image"
         :key="index" />
     </div>
   </div>
@@ -23,7 +23,7 @@ export default {
     return {
       image: this.selectedImage,
       filters: store.state.filters,
-      filter: store.state.filter
+      newPost: store.state.newPost
     }
   },
   components: {
@@ -53,6 +53,6 @@ export default {
     height: 210px;
     padding: 30px 10px;
     white-space: nowrap;
-    overflow-x: hidden;
+    overflow-x: scroll;
   }
 </style>

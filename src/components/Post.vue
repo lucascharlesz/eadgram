@@ -3,9 +3,9 @@
     <div class="header level">
         <div class="level-left">
           <figure class="image is-32x32">
-            <img :src="post.user.avatar" />
+            <img :src="post.user && post.user.avatar" />
           </figure>
-          <span class="username">{{post.user.username}}</span>
+          <span class="username">{{post.user && post.user.username}}</span>
         </div>
     </div>
     <div class="image-container"
@@ -16,7 +16,7 @@
     <div class="content">
       <img class="clap-image" src="./../assets/claps.svg" @click="clapPost" />
       <p class="likes">{{post.clapsCount}} likes</p>
-      <p class="caption"><span>{{post.username}}</span> {{post.caption}}</p>
+      <p class="caption"><span>{{post.user && post.user.username}}</span> {{post.caption}}</p>
     </div>
   </div>
 </template>

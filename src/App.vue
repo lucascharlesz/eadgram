@@ -3,6 +3,9 @@
     <div class="app-phone">
       <div class="phone-header">
         <img src="./assets/eadgram.svg" />
+        <a @click="goToHome" v-if="header.step !== 0" class="cancel-cta">Cancelar</a>
+        <a @click="goToPublish" class="next-cta" v-if="header.step === 1">Próximo</a>
+        <a @click="publishPost" class="next-cta" v-if="header.step === 2">Publicar</a>
       </div>
 
       <div class="phone-body">
@@ -20,9 +23,11 @@
             name="file"
             id="file"
             class="inputfile"
-            @change="uploadImage"/>
+            @change="uploadImage"
+            :disabled="header.step !== 0" />
           <label for="file">
-            <i class="fa fa-plus-square-o fa-1-5"></i>
+            <i class="fa fa-plus-square-o fa-1-5"
+            :class="{ 'upload-disabled': header.step !== 0}"></i>
           </label>
        </div>
       </div>
@@ -31,8 +36,16 @@
 </template>
 
 <script>
+import PostsService from "@/services/posts.service";
+import store from '@/data/store';
+
 export default {
   name: 'App',
+  data() {
+    return {
+      header: store.state.header
+    }
+  },
   methods: {
     uploadImage(evt) {
       const { target: { files } } = evt;
@@ -40,11 +53,37 @@ export default {
       const reader = new FileReader();
       reader.readAsDataURL(files[0]);
       reader.onload = (e) => {
-        this.$router.push({ name: 'post-filter', params: { selectedImage: e.target.result } });
+        
+        store.setHeaderStep(1);
+        store.setImage(e.target.result);
+        this.$router.push('/post-filter');
       };
-      // To enable reuploading of same files in Chrome
       document.querySelector('#file').value = '';
     },
+    goToHome() {
+      store.resetNewPost();
+      this.$router.push('/');
+    },
+    goToPublish() {
+      store.setHeaderStep(2);
+      this.$router.push('/publish');
+    },
+    publishPost() {
+
+      const newPost = {
+        "type": "photo",
+        "url": store.state.newPost.image,
+        "createdAt": new Date().getTime(),
+        "userId": 0,
+        "filter": store.state.newPost.filter,
+        "caption": store.state.newPost.caption,
+        "clapsCount": 0
+      }
+      PostsService.createPost(newPost).then(res => {
+        store.setPost(res.data);
+        this.goToHome();
+      });
+    }
   },
 };
 </script>
@@ -138,25 +177,6 @@ export default {
     margin-right: -15px;
   }
 
-  .caption-container {
-    height: 210px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    textarea {
-      border: 0;
-      font-size: 1rem;
-      width: 100%;
-      padding: 10px;
-      border-bottom: 1px solid #eeeeee;
-    }
-
-    textarea:focus {
-      outline: 0;
-    }
-  }
-
   .phone-footer {
     height: 35px;
     width: 375px;
@@ -190,6 +210,10 @@ export default {
         position: absolute;
         left: -25px;
         top: 5px;
+      }
+      .upload-disabled {
+        cursor: default;
+        color:#888181;
       }
     }
 
