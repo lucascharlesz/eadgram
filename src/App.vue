@@ -1,11 +1,16 @@
 <template>
   <div id="app">
+    <div id="nav-top">
+      <span>Camera</span>
+      EADGRAM
+      <span>N sei</span>
+    </div>
     <div id="content">
       <transition>
         <router-view/>
       </transition>
     </div>
-    <div id="nav">
+    <div id="nav-bottom">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
@@ -31,12 +36,15 @@ body {
   height: 100%;
   width: 100%;
 }
-#nav {
+#nav-bottom, #nav-top {
+  z-index: 1;
+  background: white;
   display: flex;
   height: 64px;
   width: 100%;
   justify-content: space-evenly;
   align-items: center;
+  box-shadow: 0px 0px 10px 0px black;
 }
 #content {
   flex: 1 1 auto;
@@ -45,6 +53,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
+}
+#content > * {
+  overflow-y: overlay;
+  height: 100%;
+  padding: 10px 0;
+  box-sizing: border-box;
 }
 </style>

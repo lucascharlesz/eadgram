@@ -1,9 +1,16 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
     <div v-for="post in posts" :key="post.id" class="post">
-      <img :src="post.url" v-on:dblclick="clapPost(post.id)">
-      <p>Clapped {{ post.clapsCount }} time(s).</p>
+      <div class="post-header"></div>
+
+      <div class="post-content">
+        <img :src="post.url" v-on:dblclick="clapPost(post.id)">
+      </div>
+
+      <div class="post-footer">
+        <img class="clap-image" src="./../assets/claps.svg" v-on:click="clapPost(post.id)" />
+        <p>Clapped {{ post.clapsCount }} time(s).</p>
+      </div>
     </div>
   </div>
 </template>
@@ -42,5 +49,22 @@ export default {
 <style>
 .post img {
   width: 100%;
+}
+
+.post .post-content img {
+  vertical-align: middle;
+}
+
+.post .post-footer {
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.post .post-footer .clap-image {
+  height: 32px;
+  width: 32px;
+  margin-right: 20px;
 }
 </style>
