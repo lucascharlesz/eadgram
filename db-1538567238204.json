@@ -5,16 +5,20 @@
       "type": "photo",
       "url": "http://www.webrun.com.br/wp-content/uploads/Depositphotos_13820869_m-2015.jpg",
       "createdAt": "1538504260437",
-      "userId": 0,
-      "clapsCount": 35
+      "user": {
+        "id": 0
+      },
+      "clapsCount": 16
     },
     {
       "id": 1,
       "type": "photo",
       "url": "http://www.webrun.com.br/wp-content/uploads/Depositphotos_13820869_m-2015.jpg",
       "createdAt": "1538504260439",
-      "userId": 0,
-      "clapsCount": 20
+      "user": {
+        "id": 0
+      },
+      "clapsCount": 15
     }
   ],
   "users": [

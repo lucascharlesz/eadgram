@@ -2,7 +2,7 @@ import api from './api.js';
 
 export default {
   getPosts() {
-    return api.get('/posts');
+    return api.get('/posts?_expand=user');
   },
 
   async clapToPost(postId) {
