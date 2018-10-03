@@ -103,7 +103,8 @@ export default {
       max-width: 120px;
       display: block;
       margin: 0 auto;
-      padding-top: 8px;
+      height: 100%;
+      padding-top: 2px;
     }
 
     .cancel-cta,
