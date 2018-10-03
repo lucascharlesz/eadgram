@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     <div v-for="post in posts" :key="post.id" class="post">
-      <div class="post-header"></div>
+      <div class="post-header">
+        <img :src="post.user.avatar">
+        <span>{{ post.user.username }}</span>
+      </div>
 
       <div class="post-content">
         <img :src="post.url" v-on:dblclick="clapPost(post.id)">
@@ -16,14 +19,10 @@
 </template>
 
 <script>
-import HelloWorld from "@/components/HelloWorld.vue";
 import PostsService from "@/services/posts.service";
 
 export default {
   name: "home",
-  components: {
-    HelloWorld
-  },
   data: function() {
     return {
       posts: []
@@ -49,6 +48,25 @@ export default {
 <style>
 .post img {
   width: 100%;
+}
+
+.post .post-header {
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.post .post-header img {
+  height: 36px;
+  width: 36px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.post .post-header span {
+  font-weight: bold;
 }
 
 .post .post-content img {

@@ -10,15 +10,23 @@
         <router-view/>
       </transition>
     </div>
-    <div id="nav-bottom">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <NavBottom></NavBottom>
   </div>
 </template>
 
+<script>
+import NavBottom from "@/components/NavBottom.vue";
+export default {
+  components: {
+    NavBottom
+  }
+};
+</script>
+
+
 <style>
 body {
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -36,7 +44,7 @@ body {
   height: 100%;
   width: 100%;
 }
-#nav-bottom, #nav-top {
+#nav-top {
   z-index: 1;
   background: white;
   display: flex;
