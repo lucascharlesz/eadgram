@@ -1,130 +1,130 @@
 <template>
-  <div class="eadgram-post">
-    <div class="header level">
-        <div class="level-left">
-          <figure class="image is-32x32">
-            <img :src="post.user && post.user.avatar" />
-          </figure>
-          <span class="username">{{post.user && post.user.username}}</span>
-        </div>
+  <div class="post">
+    <div class="post-header">
+      <img :src="post.user && post.user.avatar" />
+      <span class="username">{{post.user && post.user.username}}</span>
     </div>
-    <div class="image-container"
-      :class="post.filter"
-      :style="{ backgroundImage: 'url(' + post.url + ')' }"
-      @dblclick="clapPost">
+    <div class="post-body" @dblclick="clapPost">
+      <div class="image-container">
+        <img :src="post.url" :class="post.filter" />
+      </div>
     </div>
-    <div class="content">
-      <img class="clap-image" src="./../assets/claps.svg" @click="clapPost" />
-      <p class="likes">{{post.clapsCount}} likes</p>
-      <p class="caption"><span>{{post.user && post.user.username}}</span> {{post.caption}}</p>
+    <div class="post-footer">
+      <div class="claps-container">
+        <img class="clap-image" src="./../assets/claps.svg" @click="clapPost" />
+        <span class="claps">{{post.clapsCount}} clap(s)</span>
+      </div>
+      <div class="comments-container">
+        <p class="caption">
+          <span>{{post.user && post.user.username}}</span>
+          {{post.caption}}
+        </p>
+      </div>
+      <div class="date-container">
+        <span>{{ post.createdAt }}</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import PostsService from "@/services/posts.service";
-import store from '@/data/store';
+import store from "@/data/store";
 
 export default {
-  name: 'Post',
+  name: "Post",
   props: {
-    post: Object,
+    post: Object
   },
   methods: {
     clapPost() {
+      console.log("aaaaa");
       PostsService.clapToPost(this.post.id).then(res => {
         if (res.data) {
           store.updatePost(res.data);
         }
       });
     }
-  },
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.eadgram-post {
-  padding-top: 50px;
-}
+.post {
+  margin-bottom: 30px;
 
-.eadgram-post ~ .eadgram-post {
-  padding-top: 0;
-}
-
-.eadgram-post {
-  padding: 5px 0;
-
-  .header {
-    height: 30px;
-    border-bottom: 1px solid #fff;
-    margin: 7.5px 10px;
-
-    .image {
-      display: inline-block;
-    }
-
+  .post-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 48px;
+    padding: 8px;
     img {
-      border-radius: 99px;
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      box-shadow: 0 0 1px 0 black;
+      margin-right: 10px;
     }
-
-    .username {
-      position: relative;
-      top: 3px;
-      padding-left: 5px;
-      font-size: 0.9rem;
-      font-weight: bold;
-    }
-  }
-
-  .level {
-    margin-bottom: 0.5rem !important;
-  }
-
-  .image-container {
-    height: 330px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-  }
-
-  .content {
-    margin: 7.5px 10px;
-  }
-
-  .far.fa-heart,
-  .fas.fa-heart-o {
-    cursor: pointer;
-  }
-
-  .fas.fa-heart {
-    color: #f06595;
-  }
-
-  .likes {
-    margin: 5px 0;
-    margin-bottom: 5px !important;
-    font-size: 0.85rem;
-    font-weight: bold;
-  }
-
-  .caption {
-    font-size: 0.85rem;
-
     span {
       font-weight: bold;
     }
   }
-}
 
-.eadgram-post:last-child {
-  margin-bottom: 80px;
-}
+  .post-body {
+    .image-container {
+      width: 100%;
+      padding-top: 100%;
+      position: relative;
+      img {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
 
-.clap-image {
-  height: 32px;
-  width: 32px;
-  margin-right: 20px;
+  .post-footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    .claps-container {
+      width: 100%;
+      padding: 10px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .clap-image {
+        height: 32px;
+        width: 32px;
+        margin: 0 10px;
+      }
+      span {
+        font-weight: bold;
+      }
+    }
+    .comments-container {
+      width: 100%;
+      .caption {
+        margin: 0 10px;
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+    .date-container {
+      width: 100%;
+      span {
+        margin: 0 10px;
+        text-align: left;
+        font-size: small;
+        color: gray;
+      }
+    }
+  }
 }
-
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="post-publish">
-    <div class="selected-image"
-      :class="newPost.filter"
-      :style="{ backgroundImage: 'url(' + newPost.image + ')' }"></div>
+    <div class="image-container">
+      <img :src="newPost.image" :class="newPost.filter" />
+    </div>
     <div class="caption-container">
       <textarea class="caption-input"
         placeholder="Write a caption..."
@@ -14,45 +14,60 @@
 </template>
 
 <script>
-import store from '@/data/store';
+import store from "@/data/store";
 
 export default {
-  name: 'Publish',
+  name: "Publish",
   data() {
     return {
       image: this.selectedImage,
       newPost: store.state.newPost
-    }
+    };
   },
   data() {
     return {
       newPost: store.state.newPost
-    }
+    };
   }
 };
 </script>
 
 <style lang="scss" scoped>
-  .post-publish {
+.post-publish {
+  height: 100%;
+  width: 100%;
+}
+
+.image-container {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  img {
+    position: absolute;
+    top: 0;
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+  }
+}
+
+.caption-container {
+  height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  textarea {
+    border: 0;
+    font-size: 1rem;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #eeeeee;
   }
 
-  .caption-container {
-    height: 210px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    textarea {
-      border: 0;
-      font-size: 1rem;
-      width: 100%;
-      padding: 10px;
-      border-bottom: 1px solid #eeeeee;
-    }
-
-    textarea:focus {
-      outline: 0;
-    }
+  textarea:focus {
+    outline: 0;
   }
+}
 </style>

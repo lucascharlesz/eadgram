@@ -11,8 +11,15 @@ export default new Router({
         import('./views/Feed.vue'),
     },
     {
-      path: '/post-filter',
-      name: 'post-filter',
+      path: '/image-upload',
+      name: 'image-upload',
+      props: true,
+      component: () =>
+        import('./views/ImageUpload.vue'),
+    },
+    {
+      path: '/filter',
+      name: 'filter',
       props: true,
       component: () =>
         import('./views/PostFilter.vue'),

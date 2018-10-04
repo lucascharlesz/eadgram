@@ -1,5 +1,6 @@
 export default {
   state: {
+    user: {},
     posts: [],
     filters: [
       {
@@ -69,6 +70,9 @@ export default {
       url: "",
       caption: ""
     }
+  },
+  setUser(user) {
+    this.state.user = { ...user };
   },
   setPost(post) {
     this.state.posts.push(post);

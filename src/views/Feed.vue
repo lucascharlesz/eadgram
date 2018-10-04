@@ -28,25 +28,10 @@ export default {
 </script>
 
 <style lang="scss">
-
   .feed {
     height: 100%;
-    overflow-y: scroll;
+    width: 100%;
+    overflow-y: overlay;
     overflow-x: hidden;
-    margin-right: -15px;
-  }
-
-  .selected-image {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    height: 330px;
-  }
-
-  .filter-container {
-    height: 220px;
-    padding: 30px 10px;
-    white-space: nowrap;
-    overflow-x: scroll;
   }
 </style>

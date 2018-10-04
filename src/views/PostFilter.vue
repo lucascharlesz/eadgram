@@ -1,13 +1,10 @@
 <template>
-  <div class="post-filter">
-    <div class="selected-image"
-      :class="newPost.filter"
-      :style="{ backgroundImage: 'url(' + newPost.image + ')' }"></div>
+  <div class="image-filter-container" v-if="newPost.image">
+    <div class="image-container">
+      <img :src="newPost.image" :class="newPost.filter" />
+    </div>
     <div class="filter-container">
-      <FilterType v-for="(filter, index) in filters"
-        :filter="filter"
-        :image="newPost.image"
-        :key="index" />
+      <FilterType v-for="(filter, index) in filters" :filter="filter" :image="newPost.image" :key="index" />
     </div>
   </div>
 </template>
@@ -38,21 +35,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .post-filter {
+
+  .image-filter-container {
+    width: 100%;
     height: 100%;
-  }
+    .image-container {
+      width: 100%;
+      padding-top: 100%;
+      position: relative;
+      img {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
 
-  .selected-image {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    height: 330px;
-  }
-
-  .filter-container {
-    height: 210px;
-    padding: 30px 10px;
-    white-space: nowrap;
-    overflow-x: scroll;
+    .filter-container {
+      white-space: nowrap;
+      overflow-x: scroll;
+    }
   }
 </style>
