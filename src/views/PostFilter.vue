@@ -1,10 +1,10 @@
 <template>
-  <div class="image-filter-container" v-if="newPost.image">
+  <div class="image-filter-container" v-if="newPost.url">
     <div class="image-container">
-      <img :src="newPost.image" :class="newPost.filter" />
+      <img :src="newPost.url" :class="newPost.filter" />
     </div>
     <div class="filter-container">
-      <FilterType v-for="(filter, index) in filters" :filter="filter" :image="newPost.image" :key="index" />
+      <FilterType v-for="(filter, index) in filters" :filter="filter" :image="newPost.url" :key="index" />
     </div>
   </div>
 </template>

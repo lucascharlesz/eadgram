@@ -11,8 +11,8 @@ export default new Router({
         import('./views/Feed.vue'),
     },
     {
-      path: '/image-upload',
-      name: 'image-upload',
+      path: '/upload',
+      name: 'upload',
       props: true,
       component: () =>
         import('./views/ImageUpload.vue'),

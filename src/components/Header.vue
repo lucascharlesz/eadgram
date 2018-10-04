@@ -1,6 +1,8 @@
 <template>
   <div class="eadgram-header">
-    <a @click="goToHome" v-if="header.step !== 0" class="cancel-cta">Cancelar</a>
+    <a @click="goToHome" v-if="header.step === 1" class="cancel-cta">Cancelar</a>
+    <a @click="goToUpload" v-if="header.step === 2" class="cancel-cta">Anterior</a>
+    <a @click="goToFilter" v-if="header.step === 3" class="cancel-cta">Anterior</a>
 
     <img src="../assets/eadgram.svg" />
 
@@ -26,6 +28,10 @@ export default {
       store.resetNewPost();
       this.$router.push("/");
     },
+    goToUpload() {
+      store.setHeaderStep(1);
+      this.$router.push("/upload");
+    },
     goToFilter() {
       store.setHeaderStep(2);
       this.$router.push("/filter");
@@ -37,7 +43,7 @@ export default {
     publishPost() {
       const newPost = {
         type: "photo",
-        url: store.state.newPost.image,
+        url: store.state.newPost.url,
         createdAt: new Date().getTime(),
         userId: 0,
         filter: store.state.newPost.filter,

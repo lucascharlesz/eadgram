@@ -32,7 +32,7 @@ export default {
   methods: {
     uploadImage: function() {
       store.setHeaderStep(1);
-      this.$router.push("/image-upload");
+      this.$router.push("/upload");
     },
     backHome: function() {
       store.setHeaderStep(0);

@@ -66,7 +66,6 @@ export default {
     },
     newPost: {
       filter: "normal",
-      image: "",
       url: "",
       caption: ""
     }
@@ -94,11 +93,10 @@ export default {
   setSelectedFilter(filter) {
     this.state.newPost.filter = filter;
   },
-  setImage(img) {
-    this.state.newPost.image = img;
+  setUrl(url) {
+    this.state.newPost.url = url;
   },
   resetNewPost() {
-    this.state.newPost.image = "";
     this.state.newPost.url = "";
     this.state.newPost.filter = "normal";
     this.state.newPost.caption = "";

@@ -1,7 +1,7 @@
 <template>
   <div class="post-publish">
     <div class="image-container">
-      <img :src="newPost.image" :class="newPost.filter" />
+      <img :src="newPost.url" :class="newPost.filter" />
     </div>
     <div class="caption-container">
       <textarea class="caption-input"

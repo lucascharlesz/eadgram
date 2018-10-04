@@ -25,6 +25,9 @@ export default Vue.extend({
       imageLink: ''
     };
   },
+  mounted: function () {
+    this.imageLink = store.state.newPost.url
+  },
   methods: {
     openImageUpload() {
       this.$refs.myImageUpload.click();
@@ -34,7 +37,7 @@ export default Vue.extend({
       const imageBase64 = await this.getBase64(el.target.files[0]);
       console.log(imageBase64);
       this.imageLink = imageBase64;
-      store.setImage(this.imageLink);
+      store.setUrl(this.imageLink);
     },
 
     getBase64(file) {
