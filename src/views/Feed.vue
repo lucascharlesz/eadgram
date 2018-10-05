@@ -7,18 +7,17 @@
 <script>
 import Post from '@/components/Post.vue';
 import PostsService from "@/services/posts.service";
-import store from '@/data/store';
 
 export default {
   name: 'Feed',
-  data() {
-    return {
-      posts: store.state.posts,
-    };
+  computed: {
+    posts() {
+      return this.$store.state.posts
+    }
   },
   mounted: function() {
     PostsService.getPosts().then(res => {
-      store.setPosts(res.data);
+      this.$store.commit('setPosts', res.data);
     });
   },
   components: {

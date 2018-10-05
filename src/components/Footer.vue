@@ -14,28 +14,26 @@
 
 <script>
 import UsersService from "@/services/users.service";
-import store from "@/data/store";
 
 export default {
   name: "Footer",
-  data: function() {
-    return {
-      user: {}
-    };
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
   },
   mounted: function() {
     UsersService.getUserById(0).then(res => {
-      store.setUser(res.data);
-      this.user = { ...store.state.user };
+      this.$store.commit('setUser', res.data);
     });
   },
   methods: {
     uploadImage: function() {
-      store.setHeaderStep(1);
+      this.$store.commit('setHeaderStep', 1);
       this.$router.push("/upload");
     },
     backHome: function() {
-      store.setHeaderStep(0);
+      this.$store.commit('setHeaderStep', 0);
       this.$router.push("/");
     }
   }

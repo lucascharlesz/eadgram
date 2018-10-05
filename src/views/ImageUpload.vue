@@ -16,7 +16,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import store from '../data/store';
 
 export default Vue.extend({
   name: "ImageUpload",
@@ -26,7 +25,7 @@ export default Vue.extend({
     };
   },
   mounted: function () {
-    this.imageLink = store.state.newPost.url
+    this.imageLink = this.$store.state.newPost.url
   },
   methods: {
     openImageUpload() {
@@ -36,7 +35,7 @@ export default Vue.extend({
     async previewImage(el) {
       const imageBase64 = await this.getBase64(el.target.files[0]);
       this.imageLink = imageBase64;
-      store.setUrl(this.imageLink);
+      this.$store.commit('setUrl', this.imageLink);
     },
 
     getBase64(file) {

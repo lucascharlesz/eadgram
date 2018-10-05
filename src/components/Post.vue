@@ -29,7 +29,6 @@
 
 <script>
 import PostsService from "@/services/posts.service";
-import store from "@/data/store";
 
 export default {
   name: "Post",
@@ -40,7 +39,7 @@ export default {
     clapPost() {
       PostsService.clapToPost(this.post.id).then(res => {
         if (res.data) {
-          store.updatePost(res.data);
+          this.$store.commit('updatePost', res.data);
         }
       });
     }

@@ -1,4 +1,9 @@
-export default {
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
   state: {
     user: {},
     posts: [],
@@ -70,35 +75,40 @@ export default {
       caption: ""
     }
   },
-  setUser(user) {
-    this.state.user = { ...user };
+  mutations: {
+    setUser(state, user) {
+      state.user = { ...user };
+    },
+    setPost(state, post) {
+      state.posts.push(post);
+    },
+    updatePost(state, post) {
+      const index = state.posts.findIndex(p => p.id === post.id);
+      state.posts[index].clapsCount = post.clapsCount;
+    },
+    setPosts(state, posts) {
+      state.posts.splice(0, state.posts.length);
+      posts.forEach(p => {
+        state.posts.push(p);
+      });
+    },
+    setHeaderStep(state, val) {
+      state.header.step = val;
+    },
+    setSelectedFilter(state, filter) {
+      state.newPost.filter = filter;
+    },
+    setUrl(state, url) {
+      state.newPost.url = url;
+    },
+    resetNewPost(state) {
+      state.newPost.url = "";
+      state.newPost.filter = "normal";
+      state.newPost.caption = "";
+      state.header.step = 0;
+    }
   },
-  setPost(post) {
-    this.state.posts.push(post);
-  },
-  updatePost(post) {
-    const index = this.state.posts.findIndex(p => p.id === post.id);
-    this.state.posts[index].clapsCount = post.clapsCount;
-  },
-  setPosts(posts) {
-    this.state.posts.splice(0, this.state.posts.length);
-    posts.forEach(p => {
-      this.state.posts.push(p);
-    });
-  },
-  setHeaderStep(val) {
-    this.state.header.step = val;
-  },
-  setSelectedFilter(filter) {
-    this.state.newPost.filter = filter;
-  },
-  setUrl(url) {
-    this.state.newPost.url = url;
-  },
-  resetNewPost() {
-    this.state.newPost.url = "";
-    this.state.newPost.filter = "normal";
-    this.state.newPost.caption = "";
-    this.state.header.step = 0;
+  actions: {
+
   }
-};
+})

@@ -14,21 +14,18 @@
 </template>
 
 <script>
-import store from "@/data/store";
-
 export default {
   name: "Publish",
-  data() {
-    return {
-      image: this.selectedImage,
-      newPost: store.state.newPost
-    };
+  computed: {
+    newPost() {
+      return this.$store.state.newPost;
+    }
   },
   data() {
     return {
-      newPost: store.state.newPost
+      image: this.selectedImage,
     };
-  }
+  },
 };
 </script>
 
