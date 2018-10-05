@@ -10,7 +10,7 @@
       stroke-dasharray: 857.4342651367188;
       stroke-dashoffset: 857.4342651367188;
       fill: #00000000;
-      stroke: #000;
+      stroke: #FFF;
       stroke-width: 1px;
       animation: draw 2s linear forwards,
                  fillcolor 1s ease-in 0.5s forwards,
@@ -23,11 +23,11 @@
     }
     @keyframes fillcolor {
       from { fill: #00000000; }
-      to { fill: #000000; }
+      to { fill: #FFF; }
     }
     @keyframes strokecolor {
-      from { stroke: #000; }
-      to { stroke: #0000; }
+      from { stroke: #FFF; }
+      to { stroke: #00000000; }
     }
 
   </style>
