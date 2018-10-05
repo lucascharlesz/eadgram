@@ -32,13 +32,18 @@ export default {
       this.$router.push("/upload");
     },
     goToFilter() {
-      this.$store.commit('setHeaderStep', 2);
-      this.$router.push("/filter");
+      if (this.$store.state.newPost.url) {
+        this.$store.commit('setHeaderStep', 2);
+        this.$router.push("/filter");
+      }
     },
     goToPublish() {
-      this.$store.commit('setHeaderStep', 3);
-      this.$router.push("/publish");
+      if (this.$store.state.newPost.url) {
+        this.$store.commit('setHeaderStep', 3);
+        this.$router.push("/publish");
+      }
     },
+
     publishPost() {
       const newPost = {
         type: "photo",
