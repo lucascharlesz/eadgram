@@ -7,7 +7,7 @@
 
     <div v-show="!imageLink" class="input-container">
       <label for="image-upload">
-        UPLOAD
+        <i class="fa fa-upload"></i>
       </label>
       <input id="image-upload" ref="myImageUpload" type="file" @change="previewImage">
     </div>
@@ -57,6 +57,8 @@ export default Vue.extend({
     position: relative;
     label {
       cursor: pointer;
+      color: #527fa4;
+      font-size: 90px;
     }
     .image-container {
       width: 100%;

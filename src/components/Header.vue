@@ -79,6 +79,7 @@ export default {
   .eadgram-header > * {
     width: 33%;
     padding: 5px;
+    color: white;
   }
   .eadgram-header > :first-child {
     text-align: left;
