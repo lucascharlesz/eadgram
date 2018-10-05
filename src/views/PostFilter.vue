@@ -11,16 +11,21 @@
 
 <script>
 import FilterType from '@/components/FilterType.vue';
-import store from '@/data/store';
 
 export default {
   name: 'PostFilter',
   props: ['selectedImage'],
+  computed: {
+    filters() {
+      return this.$store.state.filters
+    },
+    newPost() {
+      return this.$store.state.newPost
+    }
+  },
   data() {
     return {
       image: this.selectedImage,
-      filters: store.state.filters,
-      newPost: store.state.newPost
     }
   },
   components: {
@@ -28,7 +33,7 @@ export default {
   },
   methods: {
     createPost() {
-      store.setPost();
+      this.$store.commit('setPost');
     },
   },
 };

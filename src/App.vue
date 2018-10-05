@@ -13,18 +13,16 @@
 </template>
 
 <script>
-import PostsService from "@/services/posts.service";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue"
-import store from "@/data/store";
 
 export default {
   name: "App",
   components: {Header, Footer},
-  data() {
-    return {
-      header: store.state.header
-    };
+  computed: {
+    header() {
+      return this.$store.state.header;
+    }
   },
   methods: {
     uploadImage(evt) {
@@ -35,8 +33,8 @@ export default {
       const reader = new FileReader();
       reader.readAsDataURL(files[0]);
       reader.onload = e => {
-        store.setHeaderStep(1);
-        store.setImage(e.target.result);
+        this.$store.setHeaderStep(1);
+        this.$store.setImage(e.target.result);
         this.$router.push("/post-filter");
       };
       document.querySelector("#file").value = "";

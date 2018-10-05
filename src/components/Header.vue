@@ -13,45 +13,44 @@
 </template>
 
 <script>
-import store from "@/data/store";
 import PostsService from "@/services/posts.service";
 
 export default {
   name: "Header",
-  data: function() {
-    return {
-      header: store.state.header
-    };
+  computed: {
+    header() {
+      return this.$store.state.header;
+    }
   },
   methods: {
     goToHome() {
-      store.resetNewPost();
+      this.$store.commit('resetNewPost');
       this.$router.push("/");
     },
     goToUpload() {
-      store.setHeaderStep(1);
+      this.$store.commit('setHeaderStep', 1);
       this.$router.push("/upload");
     },
     goToFilter() {
-      store.setHeaderStep(2);
+      this.$store.commit('setHeaderStep', 2);
       this.$router.push("/filter");
     },
     goToPublish() {
-      store.setHeaderStep(3);
+      this.$store.commit('setHeaderStep', 3);
       this.$router.push("/publish");
     },
     publishPost() {
       const newPost = {
         type: "photo",
-        url: store.state.newPost.url,
+        url: this.$store.state.newPost.url,
         createdAt: new Date().getTime(),
         userId: 0,
-        filter: store.state.newPost.filter,
-        caption: store.state.newPost.caption,
+        filter: this.$store.state.newPost.filter,
+        caption: this.$store.state.newPost.caption,
         clapsCount: 0
       };
       PostsService.createPost(newPost).then(res => {
-        store.setPost(res.data);
+        this.$store.commit('setPost', res.data);
         this.goToHome();
       });
     }
