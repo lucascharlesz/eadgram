@@ -30,5 +30,11 @@ export default new Router({
       component: () =>
         import('./views/Publish.vue'),
     },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: () =>
+        import('./views/Profile.vue'),
+    },
   ],
 });

@@ -6,9 +6,9 @@
     <div @click="uploadImage">
       <i class="fa fa-plus-square-o"></i>
     </div>
-    <div class="user-detail">
+    <router-link class="user-detail" to="/profile">
       <img :src="user.avatar" />
-    </div>
+    </router-link>
   </div>
 </template>
 

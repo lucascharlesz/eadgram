@@ -4,6 +4,9 @@ export default {
   getPosts() {
     return api.get('/posts?_expand=user&_sort=createdAt&_order=desc');
   },
+  getPostsFromUser(userId) {
+    return api.get('/posts?userId=' + userId + '&_expand=user&_sort=createdAt&_order=desc');
+  },
   createPost(post) {
     return api.post('/posts?_expand=user', post);
   },

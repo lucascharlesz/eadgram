@@ -25,7 +25,7 @@ export default Vue.extend({
     };
   },
   mounted: function () {
-    this.imageLink = this.$store.state.newPost.url
+    this.imageLink = this.$store.state.newPost.url;
   },
   methods: {
     openImageUpload() {
