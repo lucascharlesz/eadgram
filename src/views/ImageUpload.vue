@@ -1,15 +1,17 @@
 <template>
-  <div class="image-upload-container">
-    <div v-show="imageLink" class="image-container">
-      <img :src="imageLink" />
-      <button @click="openImageUpload">CHANGE</button>
-    </div>
+  <div class="image-upload">
+    <div class="image-upload-container">
+      <div v-show="imageLink" class="image-container">
+        <img :src="imageLink" />
+        <button @click="openImageUpload">CHANGE</button>
+      </div>
 
-    <div v-show="!imageLink" class="input-container">
-      <label for="image-upload">
-        UPLOAD
-      </label>
-      <input id="image-upload" ref="myImageUpload" type="file" @change="previewImage">
+      <div v-show="!imageLink" class="input-container">
+        <label for="image-upload">
+          UPLOAD
+        </label>
+        <input id="image-upload" ref="myImageUpload" type="file" @change="previewImage">
+      </div>
     </div>
   </div>
 </template>
@@ -51,6 +53,13 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+  .image-upload {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
   .image-upload-container {
     width: 100%;
     padding-top: 100%;
