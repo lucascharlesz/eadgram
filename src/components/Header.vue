@@ -64,7 +64,12 @@ export default {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    box-shadow: 0 0 2px 0 black;
+
+    border: 1px solid #1c5380;
+    border-width: 1px 1px 0;
+    box-shadow: 0 -1px 0 #06365f inset, 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    border-radius: 4px 4px 0 0;
+    background-color: #517fa4;
   }
   .eadgram-header > * {
     width: 33%;
@@ -75,5 +80,9 @@ export default {
   }
   .eadgram-header > :last-child {
     text-align: right;
+  }
+  .cancel-cta,
+  .next-cta {
+    cursor: pointer;
   }
 </style>

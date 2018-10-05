@@ -49,9 +49,20 @@ export default {
 
 body {
   margin: 0;
+  background-color: #f6f7f8;
+  overflow: hidden;
+  max-height: 100vh;
 }
 * {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+#eadgram {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 0px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 #eadgram > {
