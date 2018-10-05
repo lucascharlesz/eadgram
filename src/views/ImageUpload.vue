@@ -35,7 +35,6 @@ export default Vue.extend({
 
     async previewImage(el) {
       const imageBase64 = await this.getBase64(el.target.files[0]);
-      console.log(imageBase64);
       this.imageLink = imageBase64;
       store.setUrl(this.imageLink);
     },

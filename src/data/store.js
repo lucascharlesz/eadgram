@@ -82,7 +82,6 @@ export default {
   },
   setPosts(posts) {
     this.state.posts.splice(0, this.state.posts.length);
-    console.log(this.state.posts)
     posts.forEach(p => {
       this.state.posts.push(p);
     });

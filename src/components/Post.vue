@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     clapPost() {
-      console.log("aaaaa");
       PostsService.clapToPost(this.post.id).then(res => {
         if (res.data) {
           store.updatePost(res.data);
