@@ -31,6 +31,7 @@ export default {
 
 <style lang="scss" scoped>
 .post-publish {
+  position: absolute;
   height: 100%;
   width: 100%;
 }
@@ -50,12 +51,13 @@ export default {
 
 .caption-container {
   height: 210px;
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
   width: 100%;
 
   textarea {
+    box-sizing: border-box;
     border: 0;
     font-size: 1rem;
     width: 100%;

@@ -42,8 +42,11 @@ export default {
 <style lang="scss" scoped>
 
   .image-filter-container {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     .image-container {
       width: 100%;
       padding-top: 100%;

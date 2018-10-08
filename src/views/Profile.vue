@@ -44,7 +44,8 @@ export default {
 
 <style lang="scss">
   #profile {
-    display: flex;
+    position: absolute;
+    display: block;
     flex-direction: column;
     flex: 1 1 auto;
     height: calc(100vh - 48px - 48px);
@@ -52,7 +53,7 @@ export default {
   }
 
   .profile-header {
-    display: flex;
+    display: block;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;

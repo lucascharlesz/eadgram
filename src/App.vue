@@ -3,7 +3,7 @@
     <Header></Header>
 
     <div class="eadgram-body">
-      <transition>
+      <transition name="fade">
         <router-view/>
       </transition>
     </div>
@@ -71,12 +71,17 @@ body {
   width: 100vw;
 
   .eadgram-body {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    position: relative;
     flex: 1 1 auto;
     height: calc(100vh - 48px - 48px);
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
 
